@@ -53,9 +53,9 @@
             <h2>Documento compuesto</h2>
         </div>
         <p class="notice">El iframe está preparado para la demostración de documentos compuestos.</p>
-        <iframe src="pagina1.html" title="Demostración de documento compuesto"></iframe>
-        <button class="btn" type="button">Atrás</button>
-        <button class="btn" type="button">Adelante</button>
+        <iframe src="pagina1.html" title="Demostración de documento compuesto" onload="historial()"></iframe>
+        <button class="btn" onclick="atras()" type="button">Atrás</button>
+        <button class="btn" onclick="adelante()" type="button">Adelante</button>
     </section>
 
     <section class="section panel">
@@ -70,6 +70,6 @@
         <small>Videoclub Aurora · Material de prácticas de JavaScript</small>
     </div>
 </footer>
-
+<script src="ejercicio3_1.js"></script>
 </body>
 </html>
