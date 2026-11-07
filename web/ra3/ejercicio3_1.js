@@ -16,27 +16,46 @@ url.innerHTML = iframe.src;
 
 //--------------------------------------------
 let conteoHistorial = []
-
+const botones = document.querySelectorAll(".panel");
 let conteoAdelante = 0;
 function historial() {
-    conteoHistorial.push(iframe.contentWindow.history)
-    console.log(conteoHistorial.length - 1)
+    conteoHistorial.push(iframe.contentWindow.history);
     conteoAdelante++;
-    console.log(conteoAdelante)
+    alert(conteoHistorial.length + " - " + conteoAdelante)
+
+
+    if (conteoAdelante < conteoHistorial.length) {
+        botones[1].querySelectorAll("button")[1].style.backgroundColor = "";
+        botones[1].querySelectorAll("button")[1].disabled = false;
+    } else {
+        botones[1].querySelectorAll("button")[1].disabled = true;
+        botones[1].querySelectorAll("button")[1].style.backgroundColor = "gray";
+    }
+
+    if (conteoHistorial.length >= 2 && conteoAdelante > 1) {
+        botones[1].querySelectorAll("button")[0].style.backgroundColor = "";
+        botones[1].querySelectorAll("button")[0].disabled = false;
+    } else {
+        botones[1].querySelectorAll("button")[0].disabled = true;
+        botones[1].querySelectorAll("button")[0].style.backgroundColor = "gray";
+    }
+
 }
+
 function adelante() {
 
+    if (conteoAdelante < conteoHistorial.length) {
+        conteoHistorial.pop();
+        iframe.contentWindow.history.forward();
+    }
 
-        iframe.contentWindow.history.go();
-    
 }
 
-
 function atras() {
-    if (conteoAdelante > 0) {
-        conteoAdelante = conteoAdelante - 1;
+    if (conteoHistorial.length >= 2 && conteoAdelante > 1) {
+        conteoAdelante -= 2;
+        conteoHistorial.pop();
         iframe.contentWindow.history.back()
-        conteoHistorial.pop()
     }
 
 }
